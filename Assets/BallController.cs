@@ -40,6 +40,13 @@ public class BallController : MonoBehaviour {
 		} else if (other.gameObject.tag == "LargeCloudTag") {
 			// 加算の処理
 			score += 50;
+		} 
+
+		//ボールが画面内にある場合
+		if (this.transform.position.z > this.visiblePosZ) {
+
+			//ScoreTextに得点を表示
+			this.scoreText.GetComponent<Text> ().text = "Score:" + score;
 		}
 	}
 
@@ -50,14 +57,7 @@ public class BallController : MonoBehaviour {
 		if (this.transform.position.z < this.visiblePosZ) {
 
 			//GameoverTextにゲームオーバーを表示
-			this.gameoverText.GetComponent<Text> ().text = "Game Over\r\n\r\nあなたの得点は" + score + "点です。";
-
-		//ボールが画面内にある場合
-		} else if (this.transform.position.z > this.visiblePosZ) {
-
-			//ScoreTextに得点を表示
-			this.scoreText.GetComponent<Text> ().text = "Score:" + score ;
-
+			this.gameoverText.GetComponent<Text> ().text = "Game Over\r\n\r\nあなたの得点は" + score + "点です";
 		}
 
 	}
